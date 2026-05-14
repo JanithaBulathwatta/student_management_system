@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Test System</title>
+</head>
+    @include('libraries.style')
+<body>
+    @include('components.navbar')
+
+    @yield('content')
+
+    @include('components.footer')
+
+
+
+    @include('libraries.script')
+    @yield('customJS')
+        <script>
+                $(document).ready(function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    // $("#overlay-spinner").fadeIn(100);
+                    // init();
+                    // events();
+                    // validations();
+                });
+        </script>
+</body>
+</html>
