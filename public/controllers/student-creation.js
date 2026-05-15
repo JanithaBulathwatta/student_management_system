@@ -11,6 +11,10 @@ $(document).ready(function(){
         scrollCollapse: true,
         columnDefs: [
             { targets: [0, 1, 2, 3, 4, 5], className: 'text-center align-middle' },
+            {
+                targets:[5],
+                visible:(window.userRole==='super_admin')
+            }
         ],
     });
 
@@ -28,7 +32,7 @@ $(document).ready(function(){
 
         $.ajax({
             type:"POST",
-            url: "set-student-creation",
+            url: "/set-student-creation",
             data: formData,
             dataType: "json",
             success: function(response){
@@ -54,7 +58,7 @@ $(document).ready(function(){
 
             $.ajax({
                 type:"POST",
-                url:"set-student-remove",
+                url:"/set-student-remove",
                 dataType:"json",
                 data:data,
                 success:function(response){
@@ -118,7 +122,7 @@ $(document).ready(function(){
 
         $.ajax({
             type:"PUT",
-            url:"set-student-update",
+            url:"/set-student-update",
             data:data,
             dataType:"json",
             success:function(response){
@@ -141,7 +145,7 @@ $(document).ready(function(){
 
         $.ajax({
             type:"GET",
-            url:"get-student-details",
+            url:"/get-student-details",
             dataType:"json",
             success:function(response){
                 console.log(response)
@@ -154,14 +158,19 @@ $(document).ready(function(){
                     let index = 1;
 
                     $.each(data,function(key,row){
+                        let actionButtons = '';
+
+                        if(window.userRole === 'super_admin'){
+                            actionButtons += `<button class="btn btn-danger btnDelete" data-id= ${row['stu_id']}>Delete</button> `;
+                            actionButtons += `<button class="btn btn-success btnUpdate">update </button>`;
+                        }
                         formatedData.push([
                             index,
                             row['stu_id'],
                             row['name'],
                             row['grade'],
                             row['stream'],
-                            `<button class="btn btn-danger btnDelete" data-id= ${row['stu_id']}>Delete</button>
-                            <button class="btn btn-success btnUpdate">update </button>`
+                            actionButtons
                         ]);
                         index++
                     });

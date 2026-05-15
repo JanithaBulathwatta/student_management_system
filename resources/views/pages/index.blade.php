@@ -32,6 +32,7 @@
                 <div class="col-3 mt-5">
                     <button type="submit" class="btn btn-primary" name="btnAdd" id="btnAdd">add student</button>
                 </div>
+
             </form>
 
         </div>
@@ -47,7 +48,9 @@
                                     <th>name</th>
                                     <th>Grade</th>
                                     <th>Stream</th>
-                                    <th>action</th>
+                                    @can('student_manage')
+                                        <th>action</th>
+                                    @endcan
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -96,17 +99,26 @@
                 <div class="col-3 mt-5">
                     <button type="submit" class="btn btn-primary" name="btnUpdateStudent" id="btnUpdateStudent">Update student</button>
                 </div>
+
             </form>
       </div>
     </div>
   </div>
 </div>
 
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="btn btn-danger">
+            Logout
+        </button>
+    </form>
+
 </div>
 
 @endsection
 
 @section('customJS')
+    <script>window.userRole = "{{ auth()->user()->role }}" </script>
     <script src="{{ asset('controllers/student-creation.js') }}?v={{ filemtime(public_path('controllers/student-creation.js')) }}"></script>
 @endsection
 

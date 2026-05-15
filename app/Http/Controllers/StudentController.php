@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+
+    public function index(){
+        return view('pages.index');
+    }
     public function setStudentCreation(Request $request){
         $response = StudentService::setStudentCreation($request);
         return response()->json($response);
@@ -23,7 +27,7 @@ class StudentController extends Controller
     }
 
     public function setStudentUpdate(Request $request){
-        
+
         $response = StudentService::setStudentUpdate($request);
         return response()->json($response);
     }
