@@ -13,7 +13,7 @@ $(document).ready(function(){
             { targets: [0, 1, 2, 3, 4, 5], className: 'text-center align-middle' },
             {
                 targets:[5],
-                visible:(window.userRole==='super_admin')
+                visible:(window.userRole==='super_admin' || window.userRole==='supreme_admin')
             }
         ],
     });
@@ -160,7 +160,7 @@ $(document).ready(function(){
                     $.each(data,function(key,row){
                         let actionButtons = '';
 
-                        if(window.userRole === 'super_admin'){
+                        if(window.userRole === 'super_admin' || window.userRole==='supreme_admin'){
                             actionButtons += `<button class="btn btn-danger btnDelete" data-id= ${row['stu_id']}>Delete</button> `;
                             actionButtons += `<button class="btn btn-success btnUpdate">update </button>`;
                         }

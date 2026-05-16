@@ -48,7 +48,7 @@
                                     <th>name</th>
                                     <th>Grade</th>
                                     <th>Stream</th>
-                                    @can('student_manage')
+                                    @can('super_and_supreme')
                                         <th>action</th>
                                     @endcan
                                 </tr>

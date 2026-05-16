@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SupremeAdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,6 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/get-student-details', [StudentController::class, 'getStudenDetails']);
     Route::post('/set-student-remove', [StudentController::class, 'setStudentRemove']);
     Route::put('/set-student-update', [StudentController::class, 'setStudentUpdate']);
+
+    Route::get('/admin-panner',[SupremeAdminController::class,'index'])->name('admin.index');
+    Route::get('/get-user-details',[SupremeAdminController::class,'getUserDetails']);
 });
 
 require __DIR__.'/auth.php';
