@@ -31,7 +31,7 @@ class SupremeAdminServiceRepository implements SupremeAdminServiceInterface{
             return[
                 "status"=>401,
                 "message"=>['this is you.you can not remove you from
-                            the system. because you are the supreme admin']
+                        the system. because you are the supreme admin']
             ];
         }
 
