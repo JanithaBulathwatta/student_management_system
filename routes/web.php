@@ -18,14 +18,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    //admin rotes
     Route::get('/students', [StudentController::class, 'index'])->name('students.index');
     Route::post('/set-student-creation', [StudentController::class, 'setStudentCreation']);
     Route::get('/get-student-details', [StudentController::class, 'getStudenDetails']);
     Route::post('/set-student-remove', [StudentController::class, 'setStudentRemove']);
     Route::put('/set-student-update', [StudentController::class, 'setStudentUpdate']);
 
+    //user rotes
     Route::get('/admin-panner',[SupremeAdminController::class,'index'])->name('admin.index');
     Route::get('/get-user-details',[SupremeAdminController::class,'getUserDetails']);
+    Route::post('/set-user-delete',[SupremeAdminController::class, 'setUserDelete']);
 });
 
 require __DIR__.'/auth.php';

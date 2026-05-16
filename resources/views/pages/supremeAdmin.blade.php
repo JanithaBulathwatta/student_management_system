@@ -1,9 +1,8 @@
 @extends('layout.master')
 
 @section('content')
-    <h1>dashboard</h1>
 
-    <div class="card-body mt-5 col-lg-8 mx-auto">
+    <div class="card-body mt-5 col-lg-8 mx-auto mb-5">
         <div class="row">
             <div class="table-responsive-wrapper">
                 <table class="table table-striped table-bordered mt-5" id="tblUserDetails"
@@ -14,6 +13,7 @@
                             <th>user name</th>
                             <th>email</th>
                             <th>role</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

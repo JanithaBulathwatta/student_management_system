@@ -15,4 +15,9 @@ class SupremeAdminController extends Controller
         $response = SupremeAdminService::getUserDetails($request);
         return response()->json($response);
     }
+
+    public function setUserDelete(Request $request){
+        $response = SupremeAdminService::setUserDelete($request);
+        return response()->json($response);
+    }
 }

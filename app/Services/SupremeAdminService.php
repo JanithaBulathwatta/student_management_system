@@ -11,4 +11,9 @@ class SupremeAdminService {
         return $result;
     }
 
+    public static function setUserDelete($request){
+        $result = app()->make(SupremeAdminServiceInterface::class)->setUserDelete($request);
+        return $result;
+    }
+
 }
